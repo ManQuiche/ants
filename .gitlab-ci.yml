@@ -1,0 +1,25 @@
+image: rikorose/gcc-cmake
+
+stages:
+  - build
+  - test
+
+compile-software:
+  stage: build
+  variables:
+    CC: gcc
+    CXX: g++
+  script:
+    - cmake -H. -Bbuild
+    - cmake --build build -- -j3
+  artifacts:
+    paths:
+      - ./build/ants
+      - ./build/ants_test
+
+test-software:
+  stage: test
+  script:
+    - cmake -H. -Bbuild
+    - cmake --build build -- -j3
+    - ./build/ants_test
