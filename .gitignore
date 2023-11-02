@@ -111,3 +111,7 @@ gen
 
 ### Project specific
 /cmake-build-debug/
+
+.cache/
+
+.vscode/
